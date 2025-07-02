@@ -1,0 +1,18 @@
+
+# Define os serviços (contêineres) que compõem a aplicação.
+services:
+  # Serviço da aplicação. O nome 'app' é mais genérico agora.
+  app:
+    # Constrói a imagem a partir de um Dockerfile no diretório atual ('.').
+    # Ele usará o seu Dockerfile existente.
+    build: .
+    # Mapeia a porta 8000 do contêiner para a porta 8000 da sua máquina.
+    container_name: api # Nome do contêiner para facilitar a identificação.
+    ports:
+      - "8000:8000"
+    # Monta o diretório atual no contêiner para desenvolvimento com live-reload.
+    volumes:
+      - .:/app
+    # Opcional: Carrega variáveis de ambiente de um arquivo .env, se sua app precisar.
+    # env_file:
+    #   - .env
